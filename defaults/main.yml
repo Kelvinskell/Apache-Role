@@ -1,2 +1,4 @@
 ---
 # defaults file for Apache-Role
+
+domain: example
