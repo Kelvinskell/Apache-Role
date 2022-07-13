@@ -21,7 +21,7 @@
 
 - name: Create document root
   file:
-    path: {{ doc_root }}
+    path: "{{ doc_root }}"
     state: directory
     owner: root
     group: root
@@ -29,7 +29,7 @@
 - name: Set up an index HTML file
   copy:
     src: index.html
-    dest: {{ doc_root }}/index.html
+    dest: "{{ doc_root }}/index.html"
     owner: root
     group: root
     mode: 0644
