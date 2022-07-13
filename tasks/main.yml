@@ -34,3 +34,14 @@
     group: root
     mode: 0644
 
+- name: Set up Apache virtual host file
+  template:
+    src: vhost.j2
+    dest: /etc/apache2/sites-available/000-default.conf
+  when: ansible_os_family = 'Debian'
+
+- name: Set up httpd virtual host file
+  template:
+    src: vhost.j2
+    dest: 
+
