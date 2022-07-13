@@ -1,2 +1,12 @@
 ---
 # handlers file for Apache-Role
+
+- name: reload httpd
+  service:
+    name: httpd
+    state: reloaded
+
+- name: reload apache2
+  service:
+    name: apache2
+    state: reloaded
