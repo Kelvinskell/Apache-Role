@@ -1,2 +1,20 @@
 ---
 # tasks file for Apache-Role
+
+- name: Update apt
+  apt:
+    update_cache: yes
+  when: ansible_os_family = 'Debian'
+
+- name: Install Apache
+  apt:
+    name: apache
+    state: latest
+  when: ansible_os_fmily = 'Debian'
+
+- name: Install httpd
+  dnf:
+    name: httpd
+    state: latest
+    update_cache: yes
+  when: ansible_os_family = 'Red Hat'
