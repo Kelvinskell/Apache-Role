@@ -11,12 +11,17 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This role makes use of two variables:
+- doc_root
+- domain
 
-Dependencies
-------------
+The _doc_root_ variable represents the document root and is declared in the `main.yml` file of the `vars` directory.
+This variable is more permanent and is not expected to be trivially changed by the user.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The _domain_ variable is a more temporary variable hence it is declared in the `defaults` directory.
+
+This variable represents the domain name of the website to be provisioned alongside the server and is expected to change frequently - as per requirements.
+
 
 Example Playbook
 ----------------
