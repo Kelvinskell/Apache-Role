@@ -43,5 +43,12 @@
 - name: Set up httpd virtual host file
   template:
     src: vhost.j2
-    dest: 
+    dest: /etc/httpd/conf.d/default.conf
+  when: ansible_os_family = 'Red Hat'
+  notify: restart httpd
+
+- name: Activate virtual host configuration
+  command: a2ensite 000-default.conf
+  when: ansible_os_family = 'Debian'
+  notify: restart apache
 
