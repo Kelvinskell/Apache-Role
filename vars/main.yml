@@ -1,2 +1,4 @@
 ---
 # vars file for Apache-Role
+
+- doc_root: /var/www/html/{{ domain }}
