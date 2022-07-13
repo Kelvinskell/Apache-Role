@@ -10,14 +10,14 @@
   apt:
     name: apache2
     state: latest
-  when: ansible_os_fmily == 'Debian'
+  when: ansible_os_family == 'Debian'
 
 - name: Install httpd
   dnf:
     name: httpd
     state: latest
     update_cache: yes
-  when: ansible_os_family == 'Red Hat'
+  when: ansible_os_family == 'RedHat'
 
 - name: Create document root
   file:
@@ -44,7 +44,7 @@
   template:
     src: vhost.j2
     dest: /etc/httpd/conf.d/default.conf
-  when: ansible_os_family == 'Red Hat'
+  when: ansible_os_family == 'RedHat'
   notify: reload httpd
 
 - name: Activate virtual host configuration
