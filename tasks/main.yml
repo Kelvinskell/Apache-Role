@@ -6,9 +6,9 @@
     update_cache: yes
   when: ansible_os_family = 'Debian'
 
-- name: Install Apache
+- name: Install Apache2
   apt:
-    name: apache
+    name: apache2
     state: latest
   when: ansible_os_fmily = 'Debian'
 
@@ -45,10 +45,10 @@
     src: vhost.j2
     dest: /etc/httpd/conf.d/default.conf
   when: ansible_os_family = 'Red Hat'
-  notify: restart httpd
+  notify: reload httpd
 
 - name: Activate virtual host configuration
   command: a2ensite 000-default.conf
   when: ansible_os_family = 'Debian'
-  notify: restart apache
+  notify: reload apache2
 
