@@ -4,20 +4,20 @@
 - name: Update apt
   apt:
     update_cache: yes
-  when: ansible_os_family = 'Debian'
+  when: ansible_os_family == 'Debian'
 
 - name: Install Apache2
   apt:
     name: apache2
     state: latest
-  when: ansible_os_fmily = 'Debian'
+  when: ansible_os_fmily == 'Debian'
 
 - name: Install httpd
   dnf:
     name: httpd
     state: latest
     update_cache: yes
-  when: ansible_os_family = 'Red Hat'
+  when: ansible_os_family == 'Red Hat'
 
 - name: Create document root
   file:
@@ -38,17 +38,17 @@
   template:
     src: vhost.j2
     dest: /etc/apache2/sites-available/000-default.conf
-  when: ansible_os_family = 'Debian'
+  when: ansible_os_family == 'Debian'
 
 - name: Set up httpd virtual host file
   template:
     src: vhost.j2
     dest: /etc/httpd/conf.d/default.conf
-  when: ansible_os_family = 'Red Hat'
+  when: ansible_os_family == 'Red Hat'
   notify: reload httpd
 
 - name: Activate virtual host configuration
   command: a2ensite 000-default.conf
-  when: ansible_os_family = 'Debian'
+  when: ansible_os_family == 'Debian'
   notify: reload apache2
 
