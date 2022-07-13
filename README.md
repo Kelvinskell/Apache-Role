@@ -1,19 +1,27 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Apache-Role is an ansible role that automates the provisioning of Apache Web Servers on both Debian and RedHat Linux hosts.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+You only need to have ansible installed on the controlling machine.
+
+With just python and ssh installed on your fleet of servers, you're free to go!
+
+**N.B:** This role was developed for only Debian and RedHat Linux based distributions.
+
+All of the tasks will certainly be skipped if the above confition is not met. But with a little tweaking, you can make the role serve your purposes on a non-conforming Linux distro.
 
 Role Variables
 --------------
 
 This role makes use of two variables:
-- doc_root
-- domain
+
+__- doc_root__
+
+__- domain__
 
 The _doc_root_ variable represents the document root and is declared in the `main.yml` file of the `vars` directory.
 This variable is more permanent and is not expected to be trivially changed by the user.
@@ -25,10 +33,14 @@ This variable represents the domain name of the website to be provisioned alongs
 
 Example Playbook
 ----------------
-- name: Provision Apache Web Server
-  hosts: localhost
-  become: true
-  roles:
-  - Apache-Role
+\-  name: Provision Apache Web Server
+
+    hosts: localhost
+   
+    become: true
+   
+    roles:
+   
+      - Apache-Role
 
 
